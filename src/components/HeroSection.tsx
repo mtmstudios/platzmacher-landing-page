@@ -1,7 +1,7 @@
 import { Phone, ArrowRight, Star, Clock, BadgeEuro, ShieldCheck } from "lucide-react";
-import heroImage from "@/assets/hero-movers.jpg";
 
-const HERO_IMAGE = heroImage;
+// Unsplash: moving boxes in apartment – free to use (unsplash.com/photos/1556909114-f6e7ad7d3136)
+const HERO_IMAGE = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80";
 
 const stats = [
   { value: "100+", label: "Zufriedene Kunden" },
