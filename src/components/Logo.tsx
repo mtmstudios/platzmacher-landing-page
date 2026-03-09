@@ -3,10 +3,18 @@ interface LogoProps {
   className?: string;
 }
 
+/**
+ * die Platzmacher – Bold Slash Logo
+ * Icon: Double forward-slash (//) on a tinted block
+ * Light variant: navbar (white bg) – dark block, orange slashes, dark text
+ * Dark variant:  footer / hero    – subtle block, orange slashes, white text
+ */
 const Logo = ({ variant = "light", className = "" }: LogoProps) => {
-  const iconColor = variant === "light" ? "#FF5C00" : "white";
-  const textColor = variant === "light" ? "#1a1a1a" : "white";
-  const dieColor = variant === "light" ? "#FF5C00" : "rgba(255,255,255,0.8)";
+  const isLight = variant === "light";
+
+  const blockFill  = isLight ? "#0F172A"             : "rgba(255,255,255,0.08)";
+  const slash2     = isLight ? "rgba(255,92,0,0.35)" : "rgba(255,255,255,0.25)";
+  const textColor  = isLight ? "#0F172A"             : "#ffffff";
 
   return (
     <a
@@ -15,39 +23,42 @@ const Logo = ({ variant = "light", className = "" }: LogoProps) => {
       aria-label="die Platzmacher – Zurück zur Startseite"
     >
       <svg
-        width="178"
+        width="184"
         height="46"
-        viewBox="0 0 178 46"
+        viewBox="0 0 184 46"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        {/* Frame corners – symbolise "Platz schaffen" */}
-        <polyline points="1,13 1,3 11,3"   stroke={iconColor} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <polyline points="23,3 33,3 33,13"  stroke={iconColor} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <polyline points="1,33 1,43 11,43"  stroke={iconColor} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <polyline points="23,43 33,43 33,33" stroke={iconColor} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+        {/* Icon block */}
+        <rect x="0" y="0" width="44" height="46" rx="6" fill={blockFill} />
 
-        {/* "die" – italic, smaller, brand accent */}
+        {/* Double forward slash – speed & action */}
+        <line x1="12" y1="38" x2="26" y2="8" stroke="#FF5C00" strokeWidth="4.5" strokeLinecap="round" />
+        <line x1="24" y1="38" x2="38" y2="8" stroke={slash2}  strokeWidth="4.5" strokeLinecap="round" />
+
+        {/* "die" – italic, light */}
         <text
-          x="44" y="17"
-          fontFamily="Georgia, 'Times New Roman', serif"
+          x="56" y="18"
+          fontFamily="'Poppins', system-ui, sans-serif"
           fontStyle="italic"
+          fontWeight="300"
           fontSize="12"
-          fill={dieColor}
-          letterSpacing={2}
+          fill="#FF5C00"
+          letterSpacing={3}
+          opacity={0.9}
         >
           die
         </text>
 
-        {/* "Platzmacher" – bold, dominant */}
+        {/* "Platzmacher" – black */}
         <text
-          x="44" y="39"
-          fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+          x="56" y="40"
+          fontFamily="'Poppins', system-ui, sans-serif"
           fontWeight="900"
           fontSize="21"
           fill={textColor}
-          letterSpacing={-0.3}
+          letterSpacing={-0.5}
         >
           Platzmacher
         </text>
