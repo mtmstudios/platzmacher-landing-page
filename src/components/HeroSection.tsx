@@ -1,7 +1,7 @@
 import { Phone, ArrowRight, Star, Clock, BadgeEuro, ShieldCheck } from "lucide-react";
+import heroImage from "@/assets/hero-movers.jpg";
 
-// Unsplash: professional movers – free to use (unsplash.com/photos/ctXcNX1b4Oo)
-const HERO_IMAGE = "https://source.unsplash.com/ctXcNX1b4Oo/1200x900";
+const HERO_IMAGE = heroImage;
 
 const stats = [
   { value: "100+", label: "Zufriedene Kunden" },
