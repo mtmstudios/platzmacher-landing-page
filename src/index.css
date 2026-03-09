@@ -2,86 +2,127 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+/* ── Fonts: Poppins (headings) + Open Sans (body) ─────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,300;1,400&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 15%;
+    /* ── Core palette ─────────────────────────────── */
+    --background:            0 0% 100%;
+    --foreground:            215 28% 9%;       /* #0F172A */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 15%;
+    --card:                  0 0% 100%;
+    --card-foreground:       215 28% 9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 15%;
+    --popover:               0 0% 100%;
+    --popover-foreground:    215 28% 9%;
 
-    --primary: 24 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    /* Orange brand */
+    --primary:               22 100% 50%;      /* #FF5C00 */
+    --primary-foreground:    0 0% 100%;
 
-    --secondary: 210 5% 25%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary:             215 20% 20%;
+    --secondary-foreground:  0 0% 100%;
 
-    --muted: 30 10% 96%;
-    --muted-foreground: 0 0% 40%;
+    --muted:                 220 14% 96%;      /* very clean off-white */
+    --muted-foreground:      215 16% 40%;
 
-    --accent: 24 100% 96%;
-    --accent-foreground: 24 100% 40%;
+    --accent:                22 100% 96%;      /* light orange tint */
+    --accent-foreground:     22 100% 40%;
 
-    --destructive: 0 84% 60%;
+    --destructive:           0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 85%;
-    --ring: 24 100% 50%;
+    --border:                220 13% 91%;
+    --input:                 220 13% 88%;
+    --ring:                  22 100% 50%;
 
-    --radius: 0.5rem;
+    --radius:                0.625rem;
 
-    --anthracite: 210 5% 25%;
-    --anthracite-light: 210 5% 35%;
-    --anthracite-dark: 210 8% 15%;
-    --orange-glow: 24 100% 55%;
+    /* ── Anthracite scale ─────────────────────────── */
+    --anthracite:            215 20% 20%;
+    --anthracite-light:      215 14% 28%;
+    --anthracite-dark:       215 28% 9%;       /* #0F172A deep navy-black */
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    /* Sidebar (unchanged) */
+    --sidebar-background:    0 0% 98%;
+    --sidebar-foreground:    240 5.3% 26.1%;
+    --sidebar-primary:       240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent:        240 4.8% 95.9%;
+    --sidebar-accent-accent-foreground: 240 5.9% 10%;
+    --sidebar-border:        220 13% 91%;
+    --sidebar-ring:          217.2 91.2% 59.8%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
+
+  html { scroll-behavior: smooth; }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4 {
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, sans-serif;
+    line-height: 1.2;
+    font-weight: 700;
   }
 }
 
 @layer utilities {
+  /* ── Text gradient ───────────────────────────── */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--orange-glow)));
+    background-image: linear-gradient(135deg, hsl(22 100% 50%), hsl(38 100% 55%));
   }
 
-  .bg-anthracite {
-    background-color: hsl(var(--anthracite));
+  /* ── Background helpers ──────────────────────── */
+  .bg-anthracite       { background-color: hsl(var(--anthracite)); }
+  .bg-anthracite-dark  { background-color: hsl(var(--anthracite-dark)); }
+  .text-anthracite     { color: hsl(var(--anthracite)); }
+
+  /* ── Section divider ─────────────────────────── */
+  .section-divider {
+    @apply border-t border-border;
   }
 
-  .bg-anthracite-dark {
-    background-color: hsl(var(--anthracite-dark));
+  /* ── Stat counter ────────────────────────────── */
+  .stat-number {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 2.75rem;
+    line-height: 1;
+    color: hsl(var(--primary));
   }
 
-  .text-anthracite {
-    color: hsl(var(--anthracite));
+  /* ── Service card hover ──────────────────────── */
+  .service-card {
+    @apply bg-card rounded-2xl p-6 border border-border transition-all duration-200;
+    @apply hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5;
+  }
+
+  /* ── CTA button ──────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-primary text-primary-foreground font-bold rounded-xl;
+    @apply px-8 py-4 text-base;
+    @apply hover:bg-primary/90 active:scale-95 transition-all;
+    @apply shadow-lg;
+    box-shadow: 0 8px 24px -4px hsl(22 100% 50% / 0.35);
+  }
+
+  /* ── Trust badge ─────────────────────────────── */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full;
+    @apply bg-primary/10 border border-primary/20;
+    @apply text-sm font-semibold text-foreground;
   }
 }
