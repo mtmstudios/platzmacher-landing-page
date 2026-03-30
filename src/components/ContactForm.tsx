@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Send, CheckCircle, Phone, Clock } from "lucide-react";
 
-const WEBHOOK_URL = "https://mtmstudios.app.n8n.cloud/webhook/platzmacher-anfrage";
+const WEBHOOK_URL = "https://mtmstudios.app.n8n.cloud/webhook-test/platzmacher-anfrage";
 
 const dienstleistungen = [
   "Umzug",
